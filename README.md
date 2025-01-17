@@ -2,8 +2,6 @@
 
 This repository contains a collection of Jupyter notebooks designed to demonstrate and facilitate AI-powered data extraction and processing tasks through Orq.ai. Each notebook serves a specific purpose, from extracting structured data from unstructured sources to generating SQL queries from natural language inputs.
 
-Notebooks Overview
-
 ### 1. Data_Extraction_PDF_Invoices.ipynb
 
 This notebook focuses on extracting structured data from PDF invoices. 
