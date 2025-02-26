@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "5fc2eaae-a416-4bd8-80d0-f916b63cdfa0",
+		"name": "Datasets",
+		"description": "orq.ai datapoints API documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41631900",
+		"_collection_link": "https://warped-spaceship-810310.postman.co/workspace/0ae214f6-a7a0-4d14-966c-761a041670d5/collection/41631900-5fc2eaae-a416-4bd8-80d0-f916b63cdfa0?action=share&source=collection_link&creator=41631900"
+	},
+	"item": [
+		{
+			"name": "List datasets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a dataset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"pm.variables.set(\"datasetId\", responseData.id);",
+							"",
+							"// Run tests",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"display_name\": \"Dataset_Test\",\n  \"path\": \"Default/Datasets\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a dataset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has display_name\", function () {",
+							"    let responseData = pm.response.json();",
+							"    pm.expect(responseData).to.have.property(\"display_name\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a dataset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Display name is updated\", function () {",
+							"    let responseData = pm.response.json();",
+							"    pm.expect(responseData).to.have.property(\"display_name\", \"Test Display Name - Updated\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"display_name\": \"Test Display Name - Updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a dataset",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code 204 on successful deletion",
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"// Test to confirm response body is empty",
+							"pm.test(\"Dataset is deleted (response body is empty)\", function () {",
+							"    pm.expect(pm.response.text()).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List datapoints",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a datapoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inputs\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n  },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    }\n  ],\n  \"expected_output\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a datapoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints",
+						"{{datapointId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a datapoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inputs\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"update\"\n  },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant. (Updated) \"\n    }\n  ],\n  \"expected_output\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints",
+						"{{datapointId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a datapoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"// Test to confirm response body is empty",
+							"pm.test(\"Datapoint is deleted (response body is empty)\", function () {",
+							"    pm.expect(pm.response.text()).to.be.empty;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints",
+						"{{datapointId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create multiple datapoints",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n\n{\n    \"items\": [\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        },\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        },\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        }\n    ]\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/datapoints/bulk",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"datapoints",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all datapoints",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://my.staging.orq.ai/v2/datasets/{{datasetId}}/clear",
+					"protocol": "https",
+					"host": [
+						"my",
+						"staging",
+						"orq",
+						"ai"
+					],
+					"path": [
+						"v2",
+						"datasets",
+						"{{datasetId}}",
+						"clear"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// pm.request.headers.add({",
+					"//     key: 'x-orq-account-id',",
+					"//     value: pm.variables.get(\"x-orq-account-id\")",
+					"// });",
+					"",
+					"// pm.request.headers.add({",
+					"//     key: 'x-orq-workspace-id',",
+					"//     value: pm.variables.get(\"x-orq-workspace-id\")",
+					"// });"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "datasetId",
+			"value": ""
+		},
+		{
+			"key": "datapointId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
