@@ -64,7 +64,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.staging.orq.ai/v2/files",
+					"raw": "https://my.staging.orq.ai/v2/files",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -123,7 +123,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.staging.orq.ai/v2/files",
+					"raw": "https://my.staging.orq.ai/v2/files",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -172,7 +172,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.staging.orq.ai/v2/files/{{fileId}}",
+					"raw": "https://my.staging.orq.ai/v2/files/{{fileId}}",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -215,7 +215,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api.staging.orq.ai/v2/files/{{fileId}}",
+					"raw": "https://my.staging.orq.ai/v2/files/{{fileId}}",
 					"protocol": "https",
 					"host": [
 						"api",

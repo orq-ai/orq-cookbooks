@@ -65,7 +65,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://api.staging.orq.ai/v2/feedback",
+					"raw": "https://my.staging.orq.ai/v2/feedback",
 					"protocol": "https",
 					"host": [
 						"api",
