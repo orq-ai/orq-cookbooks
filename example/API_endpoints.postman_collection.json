@@ -1,0 +1,3461 @@
+{
+	"info": {
+		"_postman_id": "2f829fe2-2cfc-4f51-809c-55087491305b",
+		"name": "API examples",
+		"description": "This is the collection for all the orq-ai api requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41631900",
+		"_collection_link": "https://warped-spaceship-810310.postman.co/workspace/Cookbooks-sdk~0ae214f6-a7a0-4d14-966c-761a041670d5/collection/41994379-2f829fe2-2cfc-4f51-809c-55087491305b?action=share&source=collection_link&creator=41631900"
+	},
+	"item": [
+		{
+			"name": "Contacts",
+			"item": [
+				{
+					"name": "Create or update user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test if the response status is 200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Test if the response is a valid JSON",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"external_id\": \"1\",\n    \"display_name\": \"Contact_Test\",\n    \"email\": \"email@orq.ai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/contacts",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"contacts"
+							]
+						},
+						"description": "Get a remote config via remote configuration key.\n\nSample Request Body:\n\n``` json\n{\n  \"key\": \"string\",\n  \"context\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  },\n  \"metadata\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  }\n}\n\n ```\n\nSample Response:\n\n```\n{\n  \"type\": \"boolean\", // 'boolean', 'string', 'integer', 'decimal', 'list', 'json', 'deployment'\n  \"value\": \"string\"\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentation for contacts.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Datasets",
+			"item": [
+				{
+					"name": "List datasets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets?limit=10",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();",
+									"pm.variables.set(\"datasetId\", responseData.id);",
+									"",
+									"// Run tests",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"Dataset_Test_external\",\n  \"path\": \"Default\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has display_name\", function () {",
+									"    let responseData = pm.response.json();",
+									"    pm.expect(responseData).to.have.property(\"display_name\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Display name is updated\", function () {",
+									"    let responseData = pm.response.json();",
+									"    pm.expect(responseData).to.have.property(\"display_name\", \"Test Display Name - Updated\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"display_name\": \"Updated_dataset\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a dataset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code 204 on successful deletion",
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Dataset is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List datapoints",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a datapoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n  },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant.\"\n    }\n  ],\n  \"expected_output\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a datapoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints",
+								"{{datapointId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a datapoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"update\"\n  },\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful assistant. (Updated) \"\n    }\n  ],\n  \"expected_output\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints",
+								"{{datapointId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a datapoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Datapoint is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints/{{datapointId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints",
+								"{{datapointId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create multiple datapoints",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n\n{\n    \"items\": [\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        },\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        },\n        {\n            \"inputs\": {\n                \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n            },\n            \"messages\": [\n                {\n                \"role\": \"system\",\n                \"content\": \"You are a helpful assistant.\"\n                }\n            ],\n            \"expected_output\": \"\"\n        }\n    ]\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/datapoints/bulk",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"datapoints",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all datapoints",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/datasets/{{datasetId}}/clear",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"datasets",
+								"{{datasetId}}",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentation for datasets and datapoints."
+		},
+		{
+			"name": "Deployments",
+			"item": [
+				{
+					"name": "List deployments",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/deployments?limit={{limit}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"deployments"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get config",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();",
+									"pm.variables.set(\"datasetId\", responseData.id);",
+									"",
+									"// Run tests",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\" : \"your_deployment_key\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/deployments/get_config",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"deployments",
+								"get_config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoke",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();",
+									"pm.variables.set(\"datasetId\", responseData.id);",
+									"",
+									"// Run tests",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"Test_key\",\n    \"inputs\": {\n        \"variable1\": \"test\",\n        \"variable2\": \"test\"\n    },\n    \"context\": { \"language\": \"english\" },\n    \"prefix_messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": \"I am doing a test.\"\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/deployments/invoke",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"deployments",
+								"invoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add metrics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();",
+									"pm.variables.set(\"datasetId\", responseData.id);",
+									"",
+									"// Run tests",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"performance\": {\n        \"latency\": 80\n    } \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/deployments/{{traceId}}/metrics",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"deployments",
+								"{{traceId}}",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentaion for deployments."
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Submit feedback",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test if the response status is 200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Test if the response is a valid JSON",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"property\": \"rating\", // enter the field that you want to change\r\n    \"value\": \"good\", // or bad\r\n    \"trace_id\": \"\" // enter trace id\r\n} // see documentation for ohter types of feedback that you can give",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/feedback",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"feedback"
+							]
+						},
+						"description": "Get a remote config via remote configuration key.\n\nSample Request Body:\n\n``` json\n{\n  \"key\": \"string\",\n  \"context\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  },\n  \"metadata\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  }\n}\n\n ```\n\nSample Response:\n\n```\n{\n  \"type\": \"boolean\", // 'boolean', 'string', 'integer', 'decimal', 'list', 'json', 'deployment'\n  \"value\": \"string\"\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentation for feedback."
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Create a file",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains file_id, object_name, and purpose\", function () {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.have.property(\"_id\");",
+									"    pm.expect(responseJson).to.have.property(\"object_name\");",
+									"    pm.expect(responseJson).to.have.property(\"purpose\", \"retrieval\");",
+									"    pm.expect(responseJson).to.have.property(\"bytes\");",
+									"});",
+									"",
+									"pm.test(\"Request contains Bearer token\", function () {",
+									"    pm.expect(pm.request.headers.get(\"Authorization\")).to.include(\"Bearer \");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1eff445e-3d7b-44a0-b97d-e795c07809ee"
+								},
+								{
+									"key": "purpose",
+									"value": "retrieval",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/files",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List files",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Response contains file_id, object_name, and purpose for each item\", function () {",
+									"    const responseJson = pm.response.json();",
+									"    responseJson.forEach(item => {",
+									"        pm.expect(item).to.have.property(\"_id\");",
+									"        pm.expect(item).to.have.property(\"object_name\");",
+									"        pm.expect(item).to.have.property(\"purpose\", \"retrieval\");",
+									"        pm.expect(item).to.have.property(\"bytes\");",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Request contains Bearer token\", function () {",
+									"    pm.expect(pm.request.headers.get(\"Authorization\")).to.include(\"Bearer \");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/files",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a file",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"pm.test(\"Request contains Bearer token\", function () {",
+									"    pm.expect(pm.request.headers.get(\"Authorization\")).to.include(\"Bearer \");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.orq.ai/v2/files/{{fileId}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"files",
+								"{{fileId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a file",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test for status code 204 on successful deletion",
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Dataset is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.orq.ai/v2/files/{{fileId}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"files",
+								"{{fileId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentation for files."
+		},
+		{
+			"name": "Prompts",
+			"item": [
+				{
+					"name": "List prompts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a prompt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prompt_config\": {\n    \"messages\": [\n      {\n        \"content\": \"you will help me answer all the quesitons in a concise and clear manner\",\n        \"role\": \"assistant\"\n      }\n    ]\n  },\n  \"display_name\": \"Prompt_Test\",\n  \"path\": \"Default/Prompts\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a prompt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts/{{promptId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts",
+								"{{promptId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a prompt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prompt_config\": {\n    \"messages\": [\n      {\n        \"content\": \"Test-Update\",\n        \"role\": \"system\" \n      },\n      {\n        \"content\": \"you will help me answer all the quesitons in a concise and clear manner\",\n        \"role\": \"assistant\"\n      }\n    ]\n  },\n  \"display_name\": \"Prompt_Test_Update\",\n  \"path\": \"Default/Prompts\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts/{{promptId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts",
+								"{{promptId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a prompt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts/{{promptId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts",
+								"{{promptId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List prompt versions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts/{{promptId}}/versions",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts",
+								"{{promptId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a prompt version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://my.orq.ai/v2/prompts/{{promptId}}/versions/{{versionId}}",
+							"protocol": "https",
+							"host": [
+								"my",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"prompts",
+								"{{promptId}}",
+								"versions",
+								"{{versionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentation for prompts."
+		},
+		{
+			"name": "Remote configurations",
+			"item": [
+				{
+					"name": "Retrieve a remote config",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test if the response status is 200",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Test if the response is a valid JSON",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"key\": \"Remote_config_Test\" }\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.orq.ai/v2/remoteconfigs",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"remoteconfigs"
+							]
+						},
+						"description": "Get a remote config via remote configuration key.\n\nSample Request Body:\n\n``` json\n{\n  \"key\": \"string\",\n  \"context\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  },\n  \"metadata\": {\n    \"additionalProp1\": \"string\",\n    \"additionalProp2\": \"string\",\n    \"additionalProp3\": \"string\"\n  }\n}\n\n ```\n\nSample Response:\n\n```\n{\n  \"type\": \"boolean\", // 'boolean', 'string', 'integer', 'decimal', 'list', 'json', 'deployment'\n  \"value\": \"string\"\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentations for remote configurations."
+		},
+		{
+			"name": "Tools",
+			"item": [
+				{
+					"name": "Get tools",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.orq.ai/v2/tools",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"tools"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_SECRET_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"path\": \"Default/Tools\",\n  \"key\": \"new_tool\",\n  \"description\": \"tool created for testing\",\n  \"type\": \"function\",\n  \"function\": {\n    \"name\": \"example_name\",\n    \"description\": \"example_description\",\n    \"strict\": true,\n    \"parameters\": {\n      \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n    }\n  },\n  \"display_name\" : \"name\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.orq.ai/v2/tools",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"tools"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update tool",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_SECRET_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"path\": \"Default/Tools\",\n  \"description\": \"this is the updated tool\",\n  \"type\": \"function\",\n  \"function\": {\n    \"name\": \"updated_name\",\n    \"description\": \"updated_description\",\n    \"strict\": true,\n    \"parameters\": {\n      \"ANY_ADDITIONAL_PROPERTY\": \"anything\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.orq.ai/v2/tools/{{tool_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"tools",
+								"{{tool_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete tool",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_SECRET_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://api.orq.ai/v2/tools/{{tool_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"tools",
+								"{{tool_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retireve tool",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_SECRET_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://api.orq.ai/v2/tools/{{tool_key}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"orq",
+								"ai"
+							],
+							"path": [
+								"v2",
+								"tools",
+								"{{tool_key}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentations for tools."
+		},
+		{
+			"name": "Agents",
+			"item": [
+				{
+					"name": "Agents",
+					"item": [
+						{
+							"name": "List Agents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3800/v2/agents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create an agent",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Response is valid JSON\", function () {",
+											"    pm.response.to.be.json;",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"key\": \"Test_agent_2\",\n  \"project_id\": \"\",\n  \"role\": \"customer_service\",\n  \"description\": \"\",\n  \"instructions\": \"\",\n  \"status\": \"live\",\n  \"settings\": {\n    \"max_iterations\": 10,\n    \"max_execution_time\": 3600,\n    \"tool_approval_required\": \"respect_tool\",\n    \"tools\": [\n      {\n        \"id\":\"01JPN2FGH2DQH99SBXWR14KWJ2\",\n        \"requires_approval\": true,\n        \"key\": \"tool_test\",\n        \"display_name\": \"tool_test\",\n        \"action_type\": \"test\",\n        \"conditions\": []\n      }\n    ]\n  },\n  \"model\": {\n    \"id\": \"\",\n    \"integration_id\": \"\",\n    \"max_tokens\": 1,\n    \"temperature\": 1\n  },\n  \"version_hash\": \"\",\n  \"path\": \"Default\",\n  \"memory_stores\": [\n    \"\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3800/v2/agents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Agent",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"key\": \"testing_update\",\n  \"project_id\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Agent",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one agent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "execute task",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_SECRET_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"input\": \"tell me something\",\n  \"session_id\": \"\",\n  \"external_id\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{key}}/tasks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{key}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Run agent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer YOUR_SECRET_TOKEN"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"key\": \"Test_agent_2\",\n  \"model\": \"chat-bison@001\",\n  \"role\": \"google_search\",\n  \"instructions\": \"seach for who has rhe most sales?\",\n  \"tools\": [\n    {\n      \"type\": \"google_search\"\n    }\n  ],\n  \"task_definition\": {\n    \"task\": \"\"\n  },\n  \"path\": \"Customer Service/Billing/Refund\",\n  \"description\": \"this is the running of the agent to see who has the most sales\",\n  \"system_prompt\": \"be a kind and respectful tool\",\n  \"settings\": {\n    \"max_iterations\": 15,\n    \"max_execution_time\": 120\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/run",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"run"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Agents Tasks",
+					"item": [
+						{
+							"name": "List agent tasks",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{agent_key}}/tasks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{agent_key}}",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve agent task",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3800/v2/agents/{{agent_key}}/tasks/{{task_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3800",
+									"path": [
+										"v2",
+										"agents",
+										"{{agent_key}}",
+										"tasks",
+										"{{task_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "Orq.ai API documentation for agents."
+		},
+		{
+			"name": "Memory",
+			"item": [
+				{
+					"name": "List memory stores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"Testing_memory_store3\",\n  \"embedding_config\": {\n    \"model\": \"cohere/embed-multilingual-v3.0\"\n  },\n  \"description\": \"\",\n  \"ttl\": 1,\n  \"path\": \"Default\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory-store-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory-store-key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"Testing_memory_store\",\n  \"embedding_config\": {\n    \"model\": \"cohere/embed-multilingual-v3.0\"\n  },\n  \"description\": \"Updated Successfully!\",\n  \"ttl\": 1,\n  \"path\": \"Default\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory-store-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory-store-key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List memories of a store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": \"\",\n  \"tags\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": \"\",\n  \"tags\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"Updated\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List documents of a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Success\",\n  \"tags\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Updated\",\n  \"tags\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentations for memory."
+		},
+		{
+			"name": "Knowledge",
+			"item": [
+				{
+					"name": "List memory stores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/knowledge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"knowledge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"Testing_memory_store3\",\n  \"embedding_config\": {\n    \"model\": \"cohere/embed-multilingual-v3.0\"\n  },\n  \"description\": \"\",\n  \"ttl\": 1,\n  \"path\": \"Default\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory-store-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory-store-key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"Testing_memory_store\",\n  \"embedding_config\": {\n    \"model\": \"cohere/embed-multilingual-v3.0\"\n  },\n  \"description\": \"Updated Successfully!\",\n  \"ttl\": 1,\n  \"path\": \"Default\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory-store-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory-store-key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a memory store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List memories of a store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": \"\",\n  \"tags\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entity_id\": \"\",\n  \"tags\": {\n    \"ANY_ADDITIONAL_PROPERTY\": \"Updated\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List documents of a memory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response is valid JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Success\",\n  \"tags\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Content-Type includes application/json\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Updated\",\n  \"tags\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"// Test to confirm response body is empty",
+									"pm.test(\"Prompt is deleted (response body is empty)\", function () {",
+									"    pm.expect(pm.response.text()).to.be.empty;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3600/v2/memory-stores/{{memory_store_key}}/memories/{{memoryId}}/documents/{{documentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3600",
+							"path": [
+								"v2",
+								"memory-stores",
+								"{{memory_store_key}}",
+								"memories",
+								"{{memoryId}}",
+								"documents",
+								"{{documentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Orq.ai API documentations for memory."
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
