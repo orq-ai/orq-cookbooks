@@ -1,9 +1,6 @@
-## **AI-Powered Data Extraction and Processing Notebooks**
+## Orq.ai Tutorials
 
 This repository contains a collection of Jupyter notebooks and TypeScript repositories acompanying the Cookbooks in the documentation designed to demonstrate and facilitate AI-powered data extraction and processing tasks through Orq.ai. Each notebook serves a specific purpose, from extracting structured data from unstructured sources to generating SQL queries from natural language inputs.
-
-
-# Orq.ai Tutorials
 
 | Tutorial | Description |
 |----------|-------------|
