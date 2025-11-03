@@ -7,8 +7,8 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 
 | Tutorial | Description |
 |----------|-------------|
-| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | Learn to collect and utilize user feedback to improve your AI applications |
-| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | Build complex workflows by connecting multiple deployments |
+| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | Collect and utilize user feedback to improve your FAQ chatbot's accuracy |
+| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | Connect multiple deployments and process financial data from image files |
 | [Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | Integrate Orq.ai into your n8n automation workflows |
 | [Intent Classification](https://docs.orq.ai/docs/tutorials/intent-classification) | Classify user intents for chatbots and customer support |
 | [LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary) | Essential terminology and concepts for working with LLMs |
@@ -20,6 +20,8 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 | [Image-Based Receipt Extraction](https://docs.orq.ai/docs/tutorials/receipt-extraction) | Extract transaction data from receipt images |
 | [Text-to-SQL](https://docs.orq.ai/docs/tutorials/text-to-sql) | Generate SQL queries from natural language |
 | [Third-Party Vector Databases](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq) | Integrate external vector databases with Orq.ai |
+
+
 
 #### `Data_Extraction_PDF_Invoices.ipynb`
 Extract structured data from PDF invoices with support for various templates.
