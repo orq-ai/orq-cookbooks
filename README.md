@@ -7,21 +7,68 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 
 | Tutorial | Description |
 |----------|-------------|
-| [Capturing and Leveraging User Feedback in Orq](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | |
-| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | |
-| [How to use Orq.ai nodes in n8n workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | |
-| [Intent Classification with Orq.ai](https://docs.orq.ai/docs/tutorials/intent-classification) | |
-| [LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary) | |
-| [How to connect Orq.ai with your Lovable app](https://docs.orq.ai/docs/tutorials/lovable-integration) | |
-| [How to Maintain and Send Chat History with Orq.ai Deployments](https://docs.orq.ai/docs/tutorials/maintaining-history-with-a-model) | |
-| [Multilingual FAQ Bot Using RAG with Orq.ai](https://docs.orq.ai/docs/tutorials/multilingual-faq-bot) | |
-| [Data Extraction from PDF](https://docs.orq.ai/docs/tutorials/pdf-extraction) | |
-| [Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager) | |
-| [Image-Based Receipt Extraction with Orq](https://docs.orq.ai/docs/tutorials/receipt-extraction) | |
-| [Creating SQL Queries from Natural Language](https://docs.orq.ai/docs/tutorials/text-to-sql) | |
-| [Using Third Party Vector Databases with Orq.ai](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq) | |
+| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | Learn to collect and utilize user feedback to improve your AI applications |
+| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | Build complex workflows by connecting multiple deployments |
+| [Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | Integrate Orq.ai into your n8n automation workflows |
+| [Intent Classification](https://docs.orq.ai/docs/tutorials/intent-classification) | Classify user intents for chatbots and customer support |
+| [LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary) | Essential terminology and concepts for working with LLMs |
+| [Lovable App Integration](https://docs.orq.ai/docs/tutorials/lovable-integration) | Connect Orq.ai with your Lovable applications |
+| [Maintaining Chat History](https://docs.orq.ai/docs/tutorials/maintaining-history-with-a-model) | Manage conversation context in your deployments |
+| [Multilingual FAQ Bot Using RAG](https://docs.orq.ai/docs/tutorials/multilingual-faq-bot) | Build a RAG-powered FAQ system supporting multiple languages |
+| [Data Extraction from PDF](https://docs.orq.ai/docs/tutorials/pdf-extraction) | Extract structured data from PDF documents |
+| [Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager) | Centralize and version control your prompts |
+| [Image-Based Receipt Extraction](https://docs.orq.ai/docs/tutorials/receipt-extraction) | Extract transaction data from receipt images |
+| [Text-to-SQL](https://docs.orq.ai/docs/tutorials/text-to-sql) | Generate SQL queries from natural language |
+| [Third-Party Vector Databases](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq) | Integrate external vector databases with Orq.ai |
 
+#### `Data_Extraction_PDF_Invoices.ipynb`
+Extract structured data from PDF invoices with support for various templates.
 
+**Features:**
+- Multi-template invoice support
+- Pre-processing for noisy or low-quality PDFs
+- Output formats: CSV, JSON
+
+#### `Image_Based_Receipt_Extraction.ipynb`
+Extract transaction data from receipt images with robust image handling.
+
+**Features:**
+- Identifies merchant names, dates, and itemized costs
+- Handles image distortion and varying lighting
+- JSON output format
+
+### Natural Language Processing
+
+#### `Intent_Classification.ipynb`
+Classify user intents for chatbot and customer support applications.
+
+**Features:**
+- Pre-trained language models for high accuracy
+- Custom intent categories
+- Performance evaluation with confusion matrix and metrics
+
+#### `Text_to_SQL.ipynb`
+Transform natural language queries into executable SQL statements.
+
+**Features:**
+- Wide database schema support
+- SQL query validation mechanism
+- Ideal for data analysts and non-technical users
+
+## 🚀 Getting Started
+
+1. Clone this repository
+2. Install required dependencies (see individual notebooks)
+3. Follow the notebook instructions for specific use cases
+4. Refer to [Orq.ai documentation](https://docs.orq.ai) for additional support
+
+## 📖 Documentation
+
+For complete documentation, visit [docs.orq.ai](https://docs.orq.ai)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 ### 1. Data_Extraction_PDF_Invoices.ipynb
 
 This notebook focuses on extracting structured data from PDF invoices. 
