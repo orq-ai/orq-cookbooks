@@ -7,7 +7,7 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 
 | Tutorial | Description |
 |----------|-------------|
-| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | Collect and utilize user feedback to improve your FAQ chatbot's accuracy |
+| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | Collect and utilize user feedback to improve your FAQ chatbot's accuracy<br>Key Features:<br>• Feedback collection mechanisms<br>• Performance improvement tracking<br>• Accuracy optimization tools |
 | [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | Connect multiple deployments and process financial data from image files |
 | [Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | Integrate Orq.ai into your n8n automation workflows |
 | [Intent Classification](https://docs.orq.ai/docs/tutorials/intent-classification) | Classify user intents for chatbots and customer support |
