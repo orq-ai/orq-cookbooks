@@ -2,6 +2,26 @@
 
 This repository contains a collection of Jupyter notebooks designed to demonstrate and facilitate AI-powered data extraction and processing tasks through Orq.ai. Each notebook serves a specific purpose, from extracting structured data from unstructured sources to generating SQL queries from natural language inputs.
 
+
+# Orq.ai Tutorials
+
+| Tutorial | Description |
+|----------|-------------|
+| [Capturing and Leveraging User Feedback in Orq](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | |
+| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | |
+| [How to use Orq.ai nodes in n8n workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | |
+| [Intent Classification with Orq.ai](https://docs.orq.ai/docs/tutorials/intent-classification) | |
+| [LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary) | |
+| [How to connect Orq.ai with your Lovable app](https://docs.orq.ai/docs/tutorials/lovable-integration) | |
+| [How to Maintain and Send Chat History with Orq.ai Deployments](https://docs.orq.ai/docs/tutorials/maintaining-history-with-a-model) | |
+| [Multilingual FAQ Bot Using RAG with Orq.ai](https://docs.orq.ai/docs/tutorials/multilingual-faq-bot) | |
+| [Data Extraction from PDF](https://docs.orq.ai/docs/tutorials/pdf-extraction) | |
+| [Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager) | |
+| [Image-Based Receipt Extraction with Orq](https://docs.orq.ai/docs/tutorials/receipt-extraction) | |
+| [Creating SQL Queries from Natural Language](https://docs.orq.ai/docs/tutorials/text-to-sql) | |
+| [Using Third Party Vector Databases with Orq.ai](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq) | |
+
+
 ### 1. Data_Extraction_PDF_Invoices.ipynb
 
 This notebook focuses on extracting structured data from PDF invoices. 
