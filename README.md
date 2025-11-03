@@ -7,8 +7,8 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 
 | Tutorial | Description |
 |----------|-------------|
-| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | **Collect and utilize user feedback to improve your FAQ chatbot's accuracy**<br>Feedback collection mechanisms<br>Performance improvement tracking<br>Accuracy optimization tools |
-| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | **Connect multiple deployments and process financial data from image files**<br>Multi-deployment workflows<br>Financial data processing<br> Image file handling |
+| [Capturing and Leveraging User Feedback](https://docs.orq.ai/docs/tutorials/capturing-feedback-with-orq) | **Collect and utilize user feedback to improve your FAQ chatbot's accuracy**<br>• Feedback collection mechanisms<br>• Performance improvement tracking<br>• Accuracy optimization tools |
+| [Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments) | **Connect multiple deployments and process financial data from image files**<br>• Multi-deployment workflows<br>• Financial data processing<br> • Image file handling |
 | [Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows) | Integrate Orq.ai into your n8n automation workflows |
 | [Intent Classification](https://docs.orq.ai/docs/tutorials/intent-classification) | Classify user intents for chatbots and customer support |
 | [LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary) | Essential terminology and concepts for working with LLMs |
