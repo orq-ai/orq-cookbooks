@@ -1,7 +1,7 @@
 ## Orq.ai Tutorials
 This repository contains a collection of Jupyter notebooks and TypeScript repositories accompanying the Cookbooks in the documentation designed to demonstrate and facilitate AI-powered data extraction and processing tasks through Orq.ai. Each notebook serves a specific purpose, from extracting structured data from unstructured sources to generating SQL queries from natural language inputs.
 
-### Getting Started & Core Concepts
+### Getting Started 
 | Tutorial | Description |
 |----------|-------------|
 | <img src="Assets/OrqAsPromptManager.jpg" width="206"> | **[Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager)**<br>• Centralized prompt management<br>• Version control<br>• Prompt optimization tools |
