@@ -4,17 +4,17 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 ### Getting Started & Core Concepts
 | Tutorial | Description |
 |----------|-------------|
-| <img src="path/to/prompt-manager-image.jpg" width="206"> | **[Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager)**<br>• Centralized prompt management<br>• Version control<br>• Prompt optimization tools |
-| <img src="path/to/chat-history-image.jpg" width="206"> | **[Maintaining Chat History](https://docs.orq.ai/docs/tutorials/maintaining-history-with-a-model)**<br>• Conversation context management<br>• Chat history persistence<br>• Context-aware responses |
+| <img src="Assets/OrqAsPromptManager.jpg" width="206"> | **[Orq.ai as Prompt Manager](https://docs.orq.ai/docs/tutorials/prompt-manager)**<br>• Centralized prompt management<br>• Version control<br>• Prompt optimization tools |
+| <img src="Assets/HowToMaintainChatHistoryWithOrqDeployments.jpg" width="206"> | **[Maintaining Chat History](https://docs.orq.ai/docs/tutorials/maintaining-history-with-a-model)**<br>• Conversation context management<br>• Chat history persistence<br>• Context-aware responses |
 | <img src="Chaining%20Deployments%20and%20Running%20Evaluations/ChainingDeploymentsAndRunningEvaluations.jpg" width="206"> | **[Chaining Deployments and Running Evaluations](https://docs.orq.ai/docs/tutorials/chaining-deployments)**<br>• Multi-deployment workflows<br>• Financial data processing<br>• Image file handling |
-| <img src="path/to/llm-glossary-image.jpg" width="206"> | **[LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary)**<br>• Comprehensive terminology reference<br>• Concept explanations<br>• LLM best practices |
+| <img src="Assets/LLMGlossary.jpg" width="206"> | **[LLM Glossary](https://docs.orq.ai/docs/tutorials/llm-glossary)**<br>• Comprehensive terminology reference<br>• Concept explanations<br>• LLM best practices |
 
 ### Integrations & Workflows
 | Tutorial | Description |
 |----------|-------------|
-| <img src="path/to/n8n-image.jpg" width="206"> | **[Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows)**<br>• Seamless n8n integration<br>• Workflow automation<br>• Node-based configuration |
-| <img src="path/to/lovable-image.jpg" width="206"> | **[Lovable App Integration](https://docs.orq.ai/docs/tutorials/lovable-integration)**<br>• Direct Lovable integration<br>• Application connectivity<br>• Configuration guides |
-| <img src="Combine%20Orq%20with%20third%20party%20VectorDB/UsingThirdPartyVectorDatabasesWithOrq.jpg" width="206"> | **[Third-Party Vector Databases](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq)**<br>• Multiple vector DB support<br>• External database integration<br>• Flexible data storage options |
+| <img src="Assets/HowToUseOrqNodesInn8nWorkflows.jpg" width="206"> | **[Orq.ai Nodes in n8n Workflows](https://docs.orq.ai/docs/tutorials/how-to-use-orqai-nodes-in-n8n-worklfows)**<br>• Seamless n8n integration<br>• Workflow automation<br>• Node-based configuration |
+| <img src="Assets/HowToConnectOrqWithYourLovableApp.jpg" width="206"> | **[Lovable App Integration](https://docs.orq.ai/docs/tutorials/lovable-integration)**<br>• Direct Lovable integration<br>• Application connectivity<br>• Configuration guides |
+| <img src="Assets/UsingThirdPartyVectorDatabasesWithOrq.jpg" width="206"> | **[Third-Party Vector Databases](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq)**<br>• Multiple vector DB support<br>• External database integration<br>• Flexible data storage options |
 
 ### Document Processing & Data Extraction
 | Tutorial | Description |
@@ -27,7 +27,7 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 | Tutorial | Description |
 |----------|-------------|
 | <img src="Intent%20Classification/IntentClassificationwithOrq.jpg" width="206"> | **[Intent Classification](https://docs.orq.ai/docs/tutorials/intent-classification)**<br>• Pre-trained language models for high accuracy<br>• Custom intent categories<br>• Performance evaluation with confusion matrix and metrics |
-| <img src="path/to/multilingual-faq-image.jpg" width="206"> | **[Multilingual FAQ Bot Using RAG](https://docs.orq.ai/docs/tutorials/multilingual-faq-bot)**<br>• Multi-language support<br>• RAG-based retrieval<br>• FAQ automation |
+| <img src="Assets/MultilingualFAQBotUsingRAGWithOrq.jpg" width="206"> | **[Multilingual FAQ Bot Using RAG](https://docs.orq.ai/docs/tutorials/multilingual-faq-bot)**<br>• Multi-language support<br>• RAG-based retrieval<br>• FAQ automation |
 
 ### Observability & Optimization
 | Tutorial | Description |
