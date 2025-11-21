@@ -16,7 +16,7 @@ This repository contains a collection of Jupyter notebooks and TypeScript reposi
 | <img src="Assets/HowToConnectOrqWithYourLovableApp.jpg" width="206"> | **[Lovable App Integration](https://docs.orq.ai/docs/tutorials/lovable-integration)**<br>• Direct Lovable integration<br>• Application connectivity<br>• Configuration guides |
 | <img src="Assets/UsingThirdPartyVectorDatabasesWithOrq.jpg" width="206"> | **[Third-Party Vector Databases](https://docs.orq.ai/docs/tutorials/using-thirdparty-vectordbs-with-orq)**<br>• Multiple vector DB support<br>• External database integration<br>• Flexible data storage options |
 
-### Document Processing & Data Extraction
+### Document & Data Processing
 | Tutorial | Description |
 |----------|-------------|
 | <img src="Data%20Extraction%20PDF%20Invoices/DataExtractionFromPDF.jpg" width="206"> | **[Data Extraction from PDF](https://docs.orq.ai/docs/tutorials/pdf-extraction)**<br>• Multi-template invoice support<br>• Pre-processing for noisy or low-quality PDFs<br>• Output formats: CSV, JSON |
